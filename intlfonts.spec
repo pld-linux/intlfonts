@@ -12,11 +12,6 @@ URL:		http://www.gnu.org/directory/GNU/intlfonts.html
 BuildRequires:	XFree86-devel
 BuildRequires:	t1utils
 BuildRequires:	ttmkfdir
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
-Requires(post,postun):	fileutils
-Requires(post,postun):	textutils
-Requires(post,postun):	grep
-Requires(post,postun):	sed
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -138,6 +133,8 @@ Summary(pl):	Miêdzynarodowe fonty dla X - alfabet fonetyczny
 Group:		X11/Fonts
 Requires:	%{name}
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fileutils
+Requires(post,postun):	textutils
 
 %description phonetic
 This package includes some fonts of International Phonetic Alphabet.
@@ -151,6 +148,8 @@ Summary:	International fonts for X -- TrueType
 Summary(pl):	Miêdzynarodowe fonty dla X - TrueType
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fileutils
+Requires(post,postun):	textutils
 
 %description TrueType
 This package includes some TrueType fonts.
@@ -163,6 +162,8 @@ Summary:	International fonts for X -- Type1
 Summary(pl):	Miêdzynarodowe fonty dla X - Type1
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fileutils
+Requires(post,postun):	textutils
 
 %description Type1
 This package includes some Type1 fonts.
@@ -213,17 +214,17 @@ install -d $RPM_BUILD_ROOT%{_datadir}/emacs/fonts/bdf
 
 %{__make} install
 
-install -d $RPM_BUILD_ROOT/%{t1afmdir}
-mv -f $RPM_BUILD_ROOT/%{t1fontsdir}/*.afm $RPM_BUILD_ROOT/%{t1afmdir}/
-rm -f $RPM_BUILD_ROOT/%{t1fontsdir}/*.pfa
+install -d $RPM_BUILD_ROOT%{t1afmdir}
+mv -f $RPM_BUILD_ROOT%{t1fontsdir}/*.afm $RPM_BUILD_ROOT%{t1afmdir}
+rm -f $RPM_BUILD_ROOT%{t1fontsdir}/*.pfa
 
 mv -f $RPM_BUILD_ROOT%{_fontsdir}/TrueType $RPM_BUILD_ROOT%{ttffontsdir}
 
-cd $RPM_BUILD_ROOT/%{ttffontsdir}
+cd $RPM_BUILD_ROOT%{ttffontsdir}
 /usr/bin/ttmkfdir | tail +2 >fonts.scale.intl
 cd -
 
-cd $RPM_BUILD_ROOT/%{t1fontsdir}
+cd $RPM_BUILD_ROOT%{t1fontsdir}
 /usr/bin/type1inst
 tail +2 fonts.dir > fonts.dir.intl
 tail +2 fonts.scale > fonts.scale.intl
@@ -320,7 +321,7 @@ cd %{ttffontsdir}
 umask 022
 rm -f fonts.scale.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp fonts.dir
 ln -sf fonts.scale fonts.dir
@@ -333,7 +334,7 @@ cd %{ttffontsdir}
 umask 022
 rm -f fonts.scale.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp fonts.dir
 ln -sf fonts.scale fonts.dir
@@ -346,7 +347,7 @@ cd %{t1fontsdir}
 umask 022
 rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp fonts.dir
 ln -sf fonts.scale fonts.dir
@@ -361,7 +362,7 @@ cd %{t1fontsdir}
 umask 022
 rm -f fonts.scale.bak Fontmap.bak
 cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | sed -e 's/ //g' > fonts.scale
+cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
 cat fonts.scale.tmp >> fonts.scale
 rm -f fonts.scale.tmp fonts.dir
 ln -sf fonts.scale fonts.dir
