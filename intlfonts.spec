@@ -184,9 +184,15 @@ Norwegian, Polish, Russian, Slovak, Spanish, Swedish, Thai, Tigrigna,
 Turkish and Vietnamese text as bit-mapped PostScript.  To see these
 languages in X, you can use the intlfonts-* packages (among others).
 
-#%description emacs -l pl
-#Ten pakiet zawiera fonty BDF pozwalaj±ce na drukowanie do bitmapowego
-#PostScriptu tekstów ...
+%description emacs -l pl
+Ten pakiet zawiera fonty BDF pozwalaj±ce na drukowanie do bitmapowego
+PostScriptu tekstów w jêzykach: amharskim, arabskim, kantoñskim,
+chiñskim, czeskim, duñskim, esperanto, estoñskim, fiñskim, francuskim,
+niemieckim, greckim, hebrajskim, hindi, w³oskim, japoñskim,
+koreañskim, maltañskim, holenderskim, norweskim, polskim, rosyjskim,
+s³owackim, hiszpañskim, szwedzkim, tajskim, tigrinia, tureckim i
+wietnamskim. Aby zobaczyæ te jêzyki pod X, mo¿na u¿yæ pakietów
+intlfonts-* (i innych).
 
 %prep
 %setup -q
