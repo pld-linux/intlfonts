@@ -11,9 +11,8 @@ Patch0:		%{name}-Chinese.patch
 Patch1:		%{name}-dirs.patch
 URL:		http://www.gnu.org/directory/GNU/intlfonts.html
 BuildRequires:	XFree86-devel
-BuildRequires:  type1inst
 BuildRequires:	t1utils
-BuildRequires:	ttmkfdir
+BuildRequires:	type1inst
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,7 +31,8 @@ Summary:	International fonts for X -- Arabic
 Summary(pl):	Miêdzynarodowe fonty dla X - arabskie
 Group:		Fonts
 Requires:	%{name}
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fontpostinst
+Requires:	%{_fontsdir}/Misc
 
 %description arabic
 This package includes some Arabic fonts (digits and single and double
@@ -46,7 +46,7 @@ podwójne kolumny).
 Summary:	International fonts for X -- Asian
 Summary(pl):	Miêdzynarodowe fonty dla X - azjatyckie
 Group:		Fonts
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fontpostinst
 
 %description asian
 This package includes some Vietnamese, Indian, Lao, and Thai fonts.
@@ -59,7 +59,7 @@ tajskich.
 Summary:	International fonts for X -- Chinese
 Summary(pl):	Miêdzynarodowe fonty dla X - chiñskie
 Group:		Fonts
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fontpostinst
 
 %description chinese
 This package includes some GB2312, GB8565-88, BIG5 (ETen), and SiSheng
@@ -73,7 +73,7 @@ Ten pakiet zawiera trochê chiñskich fontów GB2312, GB8565-88, BIG5
 Summary:	International fonts for X -- Ethiopic
 Summary(pl):	Miêdzynarodowe fonty dla X - etiopskie
 Group:		Fonts
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fontpostinst
 
 %description ethiopic
 This package includes Unicode Ethiopic fonts.
@@ -85,7 +85,7 @@ Ten pakiet zawiera unikodowe fonty etiopskie.
 Summary:	International fonts for X -- European
 Summary(pl):	Miêdzynarodowe fonty dla X - europejskie
 Group:		Fonts
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fontpostinst
 
 %description european
 This package includes some ISO 8859-1 (Latin-1), ISO 8859-2 (Latin-2),
@@ -105,7 +105,8 @@ Summary:	International fonts for X -- Hebrew
 Summary(pl):	Miêdzynarodowe fonty dla X - hebrajskie
 Group:		Fonts
 Requires:	%{name}
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fontpostinst
+Requires:	%{_fontsdir}/Misc
 
 %description hebrew
 This package includes some Hebrew fonts.
@@ -117,7 +118,7 @@ Ten pakiet zawiera trochê fontów hebrajskich.
 Summary:	International fonts for X -- Japanese
 Summary(pl):	Miêdzynarodowe fonty dla X - japoñskie
 Group:		Fonts
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
+Requires(post,postun):	fontpostinst
 
 %description japanese
 This package includes some JISX0208.1990, JISX0208.1978, JISX0212.1990
@@ -134,9 +135,8 @@ Summary:	International fonts for X -- Phonetic Alphabet
 Summary(pl):	Miêdzynarodowe fonty dla X - alfabet fonetyczny
 Group:		Fonts
 Requires:	%{name}
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
-Requires(post,postun):	fileutils
-Requires(post,postun):	textutils
+Requires(post,postun):	fontpostinst
+Requires:	%{_fontsdir}/Misc
 
 %description phonetic
 This package includes some fonts of International Phonetic Alphabet.
@@ -149,9 +149,8 @@ fonetycznego.
 Summary:	International fonts for X -- TrueType
 Summary(pl):	Miêdzynarodowe fonty dla X - TrueType
 Group:		Fonts
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
-Requires(post,postun):	fileutils
-Requires(post,postun):	textutils
+Requires(post,postun):	fontpostinst
+Requires:	%{_fontsdir}/TTF
 
 %description TrueType
 This package includes some TrueType fonts.
@@ -163,9 +162,8 @@ Ten pakiet zawiera trochê fontów TrueType.
 Summary:	International fonts for X -- Type1
 Summary(pl):	Miêdzynarodowe fonty dla X - Type1
 Group:		Fonts
-Requires(post,postun):	/usr/X11R6/bin/mkfontdir
-Requires(post,postun):	fileutils
-Requires(post,postun):	textutils
+Requires(post,postun):	fontpostinst >= 0.1-6
+Requires:	%{_fontsdir}/Type1
 
 %description Type1
 This package includes some Type1 fonts.
@@ -222,13 +220,8 @@ rm -f $RPM_BUILD_ROOT%{t1fontsdir}/*.pfa
 
 mv -f $RPM_BUILD_ROOT%{_fontsdir}/TrueType $RPM_BUILD_ROOT%{ttffontsdir}
 
-cd $RPM_BUILD_ROOT%{ttffontsdir}
-/usr/bin/ttmkfdir | tail +2 >fonts.scale.intl
-cd -
-
 cd $RPM_BUILD_ROOT%{t1fontsdir}
 /usr/bin/type1inst
-tail +2 fonts.dir > fonts.dir.intl
 tail +2 fonts.scale > fonts.scale.intl
 mv -f Fontmap Fontmap.intl
 cd -
@@ -239,140 +232,64 @@ install -m 644 `find -name '*.bdf'` $RPM_BUILD_ROOT%{_datadir}/emacs/fonts/bdf/
 rm -rf $RPM_BUILD_ROOT
 
 %post arabic
-cd %{_fontsdir}/Misc
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Misc
 
 %postun arabic
-cd %{_fontsdir}/Misc
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Misc
 
 %post asian
-cd %{_fontsdir}/Asian
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Asian
 
 %postun asian
-cd %{_fontsdir}/Asian
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Asian
 
 %post chinese
-cd %{_fontsdir}/Chinese
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Chinese
 
 %postun chinese
-cd %{_fontsdir}/Chinese
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Chinese
 
 %post ethiopic
-cd %{_fontsdir}/Ethiopic
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Ethiopic
 
 %postun ethiopic
-cd %{_fontsdir}/Ethiopic
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Ethiopic
 
 %post european
-cd %{_fontsdir}/European
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc European
 
 %postun european
-cd %{_fontsdir}/European
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc European
 
 %post hebrew
-cd %{_fontsdir}/Misc
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Misc
 
 %postun hebrew
-cd %{_fontsdir}/Misc
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Misc
 
 %post japanese
-cd %{_fontsdir}/Japanese
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Japanese
 
 %postun japanese
-cd %{_fontsdir}/Japanese
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Japanese
 
 %post phonetic
-cd %{_fontsdir}/Misc
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Misc
 
 %postun phonetic
-cd %{_fontsdir}/Misc
-umask 022
-/usr/X11R6/bin/mkfontdir
+fontpostinst misc Misc
 
 %post TrueType
-cd %{ttffontsdir}
-umask 022
-rm -f fonts.scale.bak
-cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp fonts.dir
-ln -sf fonts.scale fonts.dir
-if [ -x /usr/X11R6/bin/xftcache ]; then
-	/usr/X11R6/bin/xftcache .
-fi
+fontpostinst TTF
 
 %postun TrueType
-cd %{ttffontsdir}
-umask 022
-rm -f fonts.scale.bak
-cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp fonts.dir
-ln -sf fonts.scale fonts.dir
-if [ -x /usr/X11R6/bin/xftcache ]; then
-	/usr/X11R6/bin/xftcache .
-fi
+fontpostinst TTF
 
 %post Type1
-cd %{t1fontsdir}
-umask 022
-rm -f fonts.scale.bak Fontmap.bak
-cat fonts.scale.* | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp fonts.dir
-ln -sf fonts.scale fonts.dir
-cat Fontmap.* > Fontmap
-cat fonts.alias.* > fonts.alias
-if [ -x /usr/X11R6/bin/xftcache ]; then
-	/usr/X11R6/bin/xftcache .
-fi
+fontpostinst Type1
 
 %postun Type1
-cd %{t1fontsdir}
-umask 022
-rm -f fonts.scale.bak Fontmap.bak
-cat fonts.scale.* 2>/dev/null | sort -u > fonts.scale.tmp
-cat fonts.scale.tmp | wc -l | tr -d ' ' > fonts.scale
-cat fonts.scale.tmp >> fonts.scale
-rm -f fonts.scale.tmp fonts.dir
-ln -sf fonts.scale fonts.dir
-cat Fontmap.* > Fontmap 2>/dev/null
-cat fonts.alias.* > fonts.alias 2>/dev/null
-if [ -x /usr/X11R6/bin/xftcache ]; then
-	/usr/X11R6/bin/xftcache .
-fi
+fontpostinst Type1
 
 %files
 %defattr(644,root,root,755)
@@ -385,23 +302,19 @@ fi
 
 %files asian
 %defattr(644,root,root,755)
-%dir %{_fontsdir}/Asian
-%{_fontsdir}/Asian/*
+%{_fontsdir}/Asian
 
 %files chinese
 %defattr(644,root,root,755)
-%dir %{_fontsdir}/Chinese
-%{_fontsdir}/Chinese/*
+%{_fontsdir}/Chinese
 
 %files ethiopic
 %defattr(644,root,root,755)
-%dir %{_fontsdir}/Ethiopic
-%{_fontsdir}/Ethiopic/*
+%{_fontsdir}/Ethiopic
 
 %files european
 %defattr(644,root,root,755)
-%dir %{_fontsdir}/European
-%{_fontsdir}/European/*
+%{_fontsdir}/European
 
 %files hebrew
 %defattr(644,root,root,755)
@@ -409,8 +322,7 @@ fi
 
 %files japanese
 %defattr(644,root,root,755)
-%dir %{_fontsdir}/Japanese
-%{_fontsdir}/Japanese/*
+%{_fontsdir}/Japanese
 
 %files phonetic
 %defattr(644,root,root,755)
