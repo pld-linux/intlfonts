@@ -5,9 +5,10 @@ Version:	1.2
 Release:	1
 License:	GPL
 Group:		X11/Fonts
-Source0:	%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnu.org/gnu/intltools/%{name}-%{version}.tar.gz
 Patch0:		%{name}-Chinese.patch
 Patch1:		%{name}-dirs.patch
+URL:		http://www.gnu.org/directory/GNU/intlfonts.html
 BuildRequires:	XFree86-devel
 BuildRequires:	t1utils
 BuildRequires:	ttmkfdir
@@ -26,8 +27,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This package contains some common used fonts.
 
+%description -l pl
+Ten pakiet zawiera trochê powszechnie u¿ywanych fontów.
+
 %package arabic
-Summary:	International fonts for X -- Arabic.
+Summary:	International fonts for X -- Arabic
+Summary(pl):	Miêdzynarodowe fonty dla X - arabskie
 Group:		X11/Fonts
 Requires:	%{name}
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
@@ -36,16 +41,26 @@ Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 This package includes some Arabic fonts (digits and single and double
 column).
 
+%description arabic -l pl
+Ten pakiet zawiera trochê arabskich fontów (cyfry i pojedyncze oraz
+podwójne kolumny).
+
 %package asian
-Summary:	International fonts for X -- Asian.
+Summary:	International fonts for X -- Asian
+Summary(pl):	Miêdzynarodowe fonty dla X - azjatyckie
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description asian
 This package includes some Vietnamese, Indian, Lao, and Thai fonts.
 
+%description asian -l pl
+Ten pakiet zawiera trochê fontów wietnamskich, indyjskich, laoskich i
+tajskich.
+
 %package chinese
-Summary:	International fonts for X -- Chinese.
+Summary:	International fonts for X -- Chinese
+Summary(pl):	Miêdzynarodowe fonty dla X - chiñskie
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
@@ -53,16 +68,25 @@ Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 This package includes some GB2312, GB8565-88, BIG5 (ETen), and SiSheng
 Chinese fonts.
 
+%description chinese -l pl
+Ten pakiet zawiera trochê chiñskich fontów GB2312, GB8565-88, BIG5
+(ETen) oraz SiSheng.
+
 %package ethiopic
-Summary:	International fonts for X -- Ethiopic.
+Summary:	International fonts for X -- Ethiopic
+Summary(pl):	Miêdzynarodowe fonty dla X - etiopskie
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description ethiopic
 This package includes Unicode Ethiopic fonts.
 
+%description ethiopic -l pl
+Ten pakiet zawiera unikodowe fonty etiopskie.
+
 %package european
-Summary:	International fonts for X -- European.
+Summary:	International fonts for X -- European
+Summary(pl):	Miêdzynarodowe fonty dla X - europejskie
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
@@ -72,8 +96,16 @@ ISO 8859-3 (Latin-3), ISO 8859-4 (Latin-4), ISO 8859-5 (Cyrillic),
 ISO 8859-7 (Greek), ISO 8859-8 (Hebrew), ISO 8859-9 (Latin-5), and KOI
 (Cyrillic) fonts.  Also one ISO 8859-1 big font is included.
 
+%description european -l pl
+Ten pakiet zawiera trochê fontów ISO 8859-1 (Latin-1), ISO 8859-2
+(Latin-2), ISO 8859-3 (Latin-3), ISO 8859-4 (Latin-4), ISO 8859-5
+(cyrilica), ISO 8859-7 (greckie), ISO 8859-8 (hebrajkie), ISO 8859-9
+(Latin-5) oraz KOI (cyrylica). Jest te¿ do³±czony jeden du¿y font ISO
+8859-1.
+
 %package hebrew
-Summary:	International fonts for X -- Hebrew.
+Summary:	International fonts for X -- Hebrew
+Summary(pl):	Miêdzynarodowe fonty dla X - hebrajskie
 Group:		X11/Fonts
 Requires:	%{name}
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
@@ -81,17 +113,28 @@ Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 %description hebrew
 This package includes some Hebrew fonts.
 
+%description hebrew -l pl
+Ten pakiet zawiera trochê fontów hebrajskich.
+
 %package japanese
-Summary:	International fonts for X -- Japanese.
+Summary:	International fonts for X -- Japanese
+Summary(pl):	Miêdzynarodowe fonty dla X - japoñskie
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description japanese
 This package includes some JISX0208.1990, JISX0208.1978, JISX0212.1990
-(HojoKanji), JISX0208.1983, and JISX0201 (Roman & Kana) Japanese fonts.
+(HojoKanji), JISX0208.1983, and JISX0201 (Roman & Kana) Japanese
+fonts.
+
+%description japanese -l pl
+Ten pakiet zawiera trochê japoñskich fontów JISX0208.1990,
+JISX0208.1978, JISX0212.1990 (HojoKanji), JISX0208.1983 oraz JISX0201
+(Roman i Kana).
 
 %package phonetic
-Summary:	International fonts for X -- Phonetic Alphabet.
+Summary:	International fonts for X -- Phonetic Alphabet
+Summary(pl):	Miêdzynarodowe fonty dla X - alfabet fonetyczny
 Group:		X11/Fonts
 Requires:	%{name}
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
@@ -99,22 +142,37 @@ Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 %description phonetic
 This package includes some fonts of International Phonetic Alphabet.
 
+%description phonetic -l pl
+Ten pakiet zawiera trochê fontów dla miêdzynarodowego alfabetu
+fonetycznego.
+
 %package TrueType
-Summary:	International fonts for X -- Truetype.
+Summary:	International fonts for X -- TrueType
+Summary(pl):	Miêdzynarodowe fonty dla X - TrueType
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description TrueType
+This package includes some TrueType fonts.
+
+%description TrueType -l pl
+Ten pakiet zawiera trochê fontów TrueType.
 
 %package Type1
-Summary:	International fonts for X -- Type1.
+Summary:	International fonts for X -- Type1
+Summary(pl):	Miêdzynarodowe fonty dla X - Type1
 Group:		X11/Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description Type1
+This package includes some Type1 fonts.
+
+%description Type1 -l pl
+Ten pakiet zawiera trochê fontów Type1.
 
 %package emacs
-Summary:	Fonts to allow multi-lingual PostScript printing from Emacs.
+Summary:	Fonts to allow multi-lingual PostScript printing from Emacs
+Summary(pl):	Fonty pozwalaj±ce na drukowanie wielojêzycznego PostScriptu z Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	emacs-common
 
@@ -125,6 +183,10 @@ Greek, Hebrew, Hindi, Italian, Japanese, Korean, Maltese, Nederlands,
 Norwegian, Polish, Russian, Slovak, Spanish, Swedish, Thai, Tigrigna,
 Turkish and Vietnamese text as bit-mapped PostScript.  To see these
 languages in X, you can use the intlfonts-* packages (among others).
+
+#%description emacs -l pl
+#Ten pakiet zawiera fonty BDF pozwalaj±ce na drukowanie do bitmapowego
+#PostScriptu tekstów ...
 
 %prep
 %setup -q
@@ -356,4 +418,5 @@ fi
 %{_fontsdir}/Type1/afm/*
 
 %files emacs
+%defattr(644,root,root,755)
 %{_datadir}/emacs/fonts/bdf/*
