@@ -10,6 +10,7 @@ Patch0:		%{name}-Chinese.patch
 Patch1:		%{name}-dirs.patch
 URL:		http://www.gnu.org/directory/GNU/intlfonts.html
 BuildRequires:	XFree86-devel
+BuildRequires:  type1inst
 BuildRequires:	t1utils
 BuildRequires:	ttmkfdir
 BuildArch:	noarch
