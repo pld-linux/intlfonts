@@ -232,52 +232,52 @@ install -m 644 `find -name '*.bdf'` $RPM_BUILD_ROOT%{_datadir}/emacs/fonts/bdf/
 rm -rf $RPM_BUILD_ROOT
 
 %post arabic
-fontpostinst misc Misc
+fontpostinst misc %{_fontsdir}/Misc
 
 %postun arabic
-fontpostinst misc Misc
+fontpostinst misc %{_fontsdir}/Misc
 
 %post asian
-fontpostinst misc Asian
+fontpostinst misc %{_fontsdir}/Asian
 
 %postun asian
-fontpostinst misc Asian
+fontpostinst misc %{_fontsdir}/Asian
 
 %post chinese
-fontpostinst misc Chinese
+fontpostinst misc %{_fontsdir}/Chinese
 
 %postun chinese
-fontpostinst misc Chinese
+fontpostinst misc %{_fontsdir}/Chinese
 
 %post ethiopic
-fontpostinst misc Ethiopic
+fontpostinst misc %{_fontsdir}/Ethiopic
 
 %postun ethiopic
-fontpostinst misc Ethiopic
+fontpostinst misc %{_fontsdir}/Ethiopic
 
 %post european
-fontpostinst misc European
+fontpostinst misc %{_fontsdir}/European
 
 %postun european
-fontpostinst misc European
+fontpostinst misc %{_fontsdir}/European
 
 %post hebrew
-fontpostinst misc Misc
+fontpostinst misc %{_fontsdir}/Misc
 
 %postun hebrew
-fontpostinst misc Misc
+fontpostinst misc %{_fontsdir}/Misc
 
 %post japanese
-fontpostinst misc Japanese
+fontpostinst misc %{_fontsdir}/Japanese
 
 %postun japanese
-fontpostinst misc Japanese
+fontpostinst misc %{_fontsdir}/Japanese
 
 %post phonetic
-fontpostinst misc Misc
+fontpostinst misc %{_fontsdir}/Misc
 
 %postun phonetic
-fontpostinst misc Misc
+fontpostinst misc %{_fontsdir}/Misc
 
 %post TrueType
 fontpostinst TTF
