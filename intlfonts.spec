@@ -222,7 +222,7 @@ mv -f $RPM_BUILD_ROOT%{_fontsdir}/TrueType $RPM_BUILD_ROOT%{ttffontsdir}
 
 cd $RPM_BUILD_ROOT%{t1fontsdir}
 /usr/bin/type1inst
-tail +2 fonts.scale > fonts.scale.intl
+tail -n +2 fonts.scale > fonts.scale.intl
 mv -f Fontmap Fontmap.intl
 cd -
 
