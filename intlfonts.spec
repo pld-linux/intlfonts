@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Fonts
 Source0:	ftp://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
+# Source0-md5:	1d1907a862b8d70d97523e75837c7aa2
 Patch0:		%{name}-Chinese.patch
 Patch1:		%{name}-dirs.patch
 URL:		http://www.gnu.org/directory/GNU/intlfonts.html
