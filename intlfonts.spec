@@ -4,7 +4,7 @@ Name:		intlfonts
 Version:	1.2
 Release:	1
 License:	GPL
-Group:		X11/Fonts
+Group:		Fonts
 Source0:	ftp://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
 # Source0-md5:	1d1907a862b8d70d97523e75837c7aa2
 Patch0:		%{name}-Chinese.patch
@@ -30,7 +30,7 @@ Ten pakiet zawiera trochê powszechnie u¿ywanych fontów.
 %package arabic
 Summary:	International fonts for X -- Arabic
 Summary(pl):	Miêdzynarodowe fonty dla X - arabskie
-Group:		X11/Fonts
+Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
@@ -45,7 +45,7 @@ podwójne kolumny).
 %package asian
 Summary:	International fonts for X -- Asian
 Summary(pl):	Miêdzynarodowe fonty dla X - azjatyckie
-Group:		X11/Fonts
+Group:		Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description asian
@@ -58,7 +58,7 @@ tajskich.
 %package chinese
 Summary:	International fonts for X -- Chinese
 Summary(pl):	Miêdzynarodowe fonty dla X - chiñskie
-Group:		X11/Fonts
+Group:		Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description chinese
@@ -72,7 +72,7 @@ Ten pakiet zawiera trochê chiñskich fontów GB2312, GB8565-88, BIG5
 %package ethiopic
 Summary:	International fonts for X -- Ethiopic
 Summary(pl):	Miêdzynarodowe fonty dla X - etiopskie
-Group:		X11/Fonts
+Group:		Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description ethiopic
@@ -84,7 +84,7 @@ Ten pakiet zawiera unikodowe fonty etiopskie.
 %package european
 Summary:	International fonts for X -- European
 Summary(pl):	Miêdzynarodowe fonty dla X - europejskie
-Group:		X11/Fonts
+Group:		Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description european
@@ -103,7 +103,7 @@ Ten pakiet zawiera trochê fontów ISO 8859-1 (Latin-1), ISO 8859-2
 %package hebrew
 Summary:	International fonts for X -- Hebrew
 Summary(pl):	Miêdzynarodowe fonty dla X - hebrajskie
-Group:		X11/Fonts
+Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
@@ -116,7 +116,7 @@ Ten pakiet zawiera trochê fontów hebrajskich.
 %package japanese
 Summary:	International fonts for X -- Japanese
 Summary(pl):	Miêdzynarodowe fonty dla X - japoñskie
-Group:		X11/Fonts
+Group:		Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 
 %description japanese
@@ -132,7 +132,7 @@ JISX0208.1978, JISX0212.1990 (HojoKanji), JISX0208.1983 oraz JISX0201
 %package phonetic
 Summary:	International fonts for X -- Phonetic Alphabet
 Summary(pl):	Miêdzynarodowe fonty dla X - alfabet fonetyczny
-Group:		X11/Fonts
+Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 Requires(post,postun):	fileutils
@@ -148,7 +148,7 @@ fonetycznego.
 %package TrueType
 Summary:	International fonts for X -- TrueType
 Summary(pl):	Miêdzynarodowe fonty dla X - TrueType
-Group:		X11/Fonts
+Group:		Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 Requires(post,postun):	fileutils
 Requires(post,postun):	textutils
@@ -162,7 +162,7 @@ Ten pakiet zawiera trochê fontów TrueType.
 %package Type1
 Summary:	International fonts for X -- Type1
 Summary(pl):	Miêdzynarodowe fonty dla X - Type1
-Group:		X11/Fonts
+Group:		Fonts
 Requires(post,postun):	/usr/X11R6/bin/mkfontdir
 Requires(post,postun):	fileutils
 Requires(post,postun):	textutils
