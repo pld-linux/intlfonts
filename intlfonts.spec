@@ -1,5 +1,5 @@
 Summary:	GNU international fonts
-Summary(pl):	Miêdzynarodowe fonty GNU
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty GNU
 Name:		intlfonts
 Version:	1.2.1
 Release:	1
@@ -23,12 +23,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 This package contains some common used fonts.
 
-%description -l pl
-Ten pakiet zawiera trochê powszechnie u¿ywanych fontów.
+%description -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ powszechnie uÅ¼ywanych fontÃ³w.
 
 %package arabic
 Summary:	International fonts for X -- Arabic
-Summary(pl):	Miêdzynarodowe fonty dla X - arabskie
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - arabskie
 Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	fontpostinst
@@ -38,26 +38,26 @@ Requires:	%{_fontsdir}/Misc
 This package includes some Arabic fonts (digits and single and double
 column).
 
-%description arabic -l pl
-Ten pakiet zawiera trochê arabskich fontów (cyfry i pojedyncze oraz
-podwójne kolumny).
+%description arabic -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ arabskich fontÃ³w (cyfry i pojedyncze oraz
+podwÃ³jne kolumny).
 
 %package asian
 Summary:	International fonts for X -- Asian
-Summary(pl):	Miêdzynarodowe fonty dla X - azjatyckie
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - azjatyckie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
 %description asian
 This package includes some Vietnamese, Indian, Lao, and Thai fonts.
 
-%description asian -l pl
-Ten pakiet zawiera trochê fontów wietnamskich, indyjskich, laoskich i
+%description asian -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ fontÃ³w wietnamskich, indyjskich, laoskich i
 tajskich.
 
 %package chinese
 Summary:	International fonts for X -- Chinese
-Summary(pl):	Miêdzynarodowe fonty dla X - chiñskie
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - chiÅ„skie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -65,25 +65,25 @@ Requires(post,postun):	fontpostinst
 This package includes some GB2312, GB8565-88, BIG5 (ETen), and SiSheng
 Chinese fonts.
 
-%description chinese -l pl
-Ten pakiet zawiera trochê chiñskich fontów GB2312, GB8565-88, BIG5
+%description chinese -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ chiÅ„skich fontÃ³w GB2312, GB8565-88, BIG5
 (ETen) oraz SiSheng.
 
 %package ethiopic
 Summary:	International fonts for X -- Ethiopic
-Summary(pl):	Miêdzynarodowe fonty dla X - etiopskie
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - etiopskie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
 %description ethiopic
 This package includes Unicode Ethiopic fonts.
 
-%description ethiopic -l pl
+%description ethiopic -l pl.UTF-8
 Ten pakiet zawiera unikodowe fonty etiopskie.
 
 %package european
 Summary:	International fonts for X -- European
-Summary(pl):	Miêdzynarodowe fonty dla X - europejskie
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - europejskie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -93,16 +93,16 @@ ISO 8859-3 (Latin-3), ISO 8859-4 (Latin-4), ISO 8859-5 (Cyrillic),
 ISO 8859-7 (Greek), ISO 8859-8 (Hebrew), ISO 8859-9 (Latin-5), and KOI
 (Cyrillic) fonts.  Also one ISO 8859-1 big font is included.
 
-%description european -l pl
-Ten pakiet zawiera trochê fontów ISO 8859-1 (Latin-1), ISO 8859-2
+%description european -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ fontÃ³w ISO 8859-1 (Latin-1), ISO 8859-2
 (Latin-2), ISO 8859-3 (Latin-3), ISO 8859-4 (Latin-4), ISO 8859-5
 (cyrilica), ISO 8859-7 (greckie), ISO 8859-8 (hebrajkie), ISO 8859-9
-(Latin-5) oraz KOI (cyrylica). Jest te¿ do³±czony jeden du¿y font ISO
+(Latin-5) oraz KOI (cyrylica). Jest teÅ¼ doÅ‚Ä…czony jeden duÅ¼y font ISO
 8859-1.
 
 %package hebrew
 Summary:	International fonts for X -- Hebrew
-Summary(pl):	Miêdzynarodowe fonty dla X - hebrajskie
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - hebrajskie
 Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	fontpostinst
@@ -111,12 +111,12 @@ Requires:	%{_fontsdir}/Misc
 %description hebrew
 This package includes some Hebrew fonts.
 
-%description hebrew -l pl
-Ten pakiet zawiera trochê fontów hebrajskich.
+%description hebrew -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ fontÃ³w hebrajskich.
 
 %package japanese
 Summary:	International fonts for X -- Japanese
-Summary(pl):	Miêdzynarodowe fonty dla X - japoñskie
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - japoÅ„skie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -125,14 +125,14 @@ This package includes some JISX0208.1990, JISX0208.1978, JISX0212.1990
 (HojoKanji), JISX0208.1983, and JISX0201 (Roman & Kana) Japanese
 fonts.
 
-%description japanese -l pl
-Ten pakiet zawiera trochê japoñskich fontów JISX0208.1990,
+%description japanese -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ japoÅ„skich fontÃ³w JISX0208.1990,
 JISX0208.1978, JISX0212.1990 (HojoKanji), JISX0208.1983 oraz JISX0201
 (Roman i Kana).
 
 %package phonetic
 Summary:	International fonts for X -- Phonetic Alphabet
-Summary(pl):	Miêdzynarodowe fonty dla X - alfabet fonetyczny
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - alfabet fonetyczny
 Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	fontpostinst
@@ -141,13 +141,13 @@ Requires:	%{_fontsdir}/Misc
 %description phonetic
 This package includes some fonts of International Phonetic Alphabet.
 
-%description phonetic -l pl
-Ten pakiet zawiera trochê fontów dla miêdzynarodowego alfabetu
+%description phonetic -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ fontÃ³w dla miÄ™dzynarodowego alfabetu
 fonetycznego.
 
 %package TrueType
 Summary:	International fonts for X -- TrueType
-Summary(pl):	Miêdzynarodowe fonty dla X - TrueType
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - TrueType
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/TTF
@@ -155,12 +155,12 @@ Requires:	%{_fontsdir}/TTF
 %description TrueType
 This package includes some TrueType fonts.
 
-%description TrueType -l pl
-Ten pakiet zawiera trochê fontów TrueType.
+%description TrueType -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ fontÃ³w TrueType.
 
 %package Type1
 Summary:	International fonts for X -- Type1
-Summary(pl):	Miêdzynarodowe fonty dla X - Type1
+Summary(pl.UTF-8):   MiÄ™dzynarodowe fonty dla X - Type1
 Group:		Fonts
 Requires(post,postun):	fontpostinst >= 0.1-6
 Requires:	%{_fontsdir}/Type1
@@ -168,12 +168,12 @@ Requires:	%{_fontsdir}/Type1
 %description Type1
 This package includes some Type1 fonts.
 
-%description Type1 -l pl
-Ten pakiet zawiera trochê fontów Type1.
+%description Type1 -l pl.UTF-8
+Ten pakiet zawiera trochÄ™ fontÃ³w Type1.
 
 %package emacs
 Summary:	Fonts to allow multi-lingual PostScript printing from Emacs
-Summary(pl):	Fonty pozwalaj±ce na drukowanie wielojêzycznego PostScriptu z Emacsa
+Summary(pl.UTF-8):   Fonty pozwalajÄ…ce na drukowanie wielojÄ™zycznego PostScriptu z Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	emacs-common
 
@@ -185,14 +185,14 @@ Norwegian, Polish, Russian, Slovak, Spanish, Swedish, Thai, Tigrigna,
 Turkish and Vietnamese text as bit-mapped PostScript.  To see these
 languages in X, you can use the intlfonts-* packages (among others).
 
-%description emacs -l pl
-Ten pakiet zawiera fonty BDF pozwalaj±ce na drukowanie do bitmapowego
-PostScriptu tekstów w jêzykach: amharskim, arabskim, kantoñskim,
-chiñskim, czeskim, duñskim, esperanto, estoñskim, fiñskim, francuskim,
-niemieckim, greckim, hebrajskim, hindi, w³oskim, japoñskim,
-koreañskim, maltañskim, holenderskim, norweskim, polskim, rosyjskim,
-s³owackim, hiszpañskim, szwedzkim, tajskim, tigrinia, tureckim i
-wietnamskim. Aby zobaczyæ te jêzyki pod X, mo¿na u¿yæ pakietów
+%description emacs -l pl.UTF-8
+Ten pakiet zawiera fonty BDF pozwalajÄ…ce na drukowanie do bitmapowego
+PostScriptu tekstÃ³w w jÄ™zykach: amharskim, arabskim, kantoÅ„skim,
+chiÅ„skim, czeskim, duÅ„skim, esperanto, estoÅ„skim, fiÅ„skim, francuskim,
+niemieckim, greckim, hebrajskim, hindi, wÅ‚oskim, japoÅ„skim,
+koreaÅ„skim, maltaÅ„skim, holenderskim, norweskim, polskim, rosyjskim,
+sÅ‚owackim, hiszpaÅ„skim, szwedzkim, tajskim, tigrinia, tureckim i
+wietnamskim. Aby zobaczyÄ‡ te jÄ™zyki pod X, moÅ¼na uÅ¼yÄ‡ pakietÃ³w
 intlfonts-* (i innych).
 
 %prep
