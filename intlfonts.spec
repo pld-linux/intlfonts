@@ -1,5 +1,5 @@
 Summary:	GNU international fonts
-Summary(pl.UTF-8):   Międzynarodowe fonty GNU
+Summary(pl.UTF-8):	Międzynarodowe fonty GNU
 Name:		intlfonts
 Version:	1.2.1
 Release:	1
@@ -28,7 +28,7 @@ Ten pakiet zawiera trochę powszechnie używanych fontów.
 
 %package arabic
 Summary:	International fonts for X -- Arabic
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - arabskie
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - arabskie
 Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	fontpostinst
@@ -44,7 +44,7 @@ podwójne kolumny).
 
 %package asian
 Summary:	International fonts for X -- Asian
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - azjatyckie
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - azjatyckie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -57,7 +57,7 @@ tajskich.
 
 %package chinese
 Summary:	International fonts for X -- Chinese
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - chińskie
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - chińskie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -71,7 +71,7 @@ Ten pakiet zawiera trochę chińskich fontów GB2312, GB8565-88, BIG5
 
 %package ethiopic
 Summary:	International fonts for X -- Ethiopic
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - etiopskie
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - etiopskie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -83,7 +83,7 @@ Ten pakiet zawiera unikodowe fonty etiopskie.
 
 %package european
 Summary:	International fonts for X -- European
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - europejskie
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - europejskie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -102,7 +102,7 @@ Ten pakiet zawiera trochę fontów ISO 8859-1 (Latin-1), ISO 8859-2
 
 %package hebrew
 Summary:	International fonts for X -- Hebrew
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - hebrajskie
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - hebrajskie
 Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	fontpostinst
@@ -116,7 +116,7 @@ Ten pakiet zawiera trochę fontów hebrajskich.
 
 %package japanese
 Summary:	International fonts for X -- Japanese
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - japońskie
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - japońskie
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 
@@ -132,7 +132,7 @@ JISX0208.1978, JISX0212.1990 (HojoKanji), JISX0208.1983 oraz JISX0201
 
 %package phonetic
 Summary:	International fonts for X -- Phonetic Alphabet
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - alfabet fonetyczny
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - alfabet fonetyczny
 Group:		Fonts
 Requires:	%{name}
 Requires(post,postun):	fontpostinst
@@ -147,7 +147,7 @@ fonetycznego.
 
 %package TrueType
 Summary:	International fonts for X -- TrueType
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - TrueType
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - TrueType
 Group:		Fonts
 Requires(post,postun):	fontpostinst
 Requires:	%{_fontsdir}/TTF
@@ -160,7 +160,7 @@ Ten pakiet zawiera trochę fontów TrueType.
 
 %package Type1
 Summary:	International fonts for X -- Type1
-Summary(pl.UTF-8):   Międzynarodowe fonty dla X - Type1
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - Type1
 Group:		Fonts
 Requires(post,postun):	fontpostinst >= 0.1-6
 Requires:	%{_fontsdir}/Type1
@@ -173,7 +173,7 @@ Ten pakiet zawiera trochę fontów Type1.
 
 %package emacs
 Summary:	Fonts to allow multi-lingual PostScript printing from Emacs
-Summary(pl.UTF-8):   Fonty pozwalające na drukowanie wielojęzycznego PostScriptu z Emacsa
+Summary(pl.UTF-8):	Fonty pozwalające na drukowanie wielojęzycznego PostScriptu z Emacsa
 Group:		Applications/Editors/Emacs
 Requires:	emacs-common
 
