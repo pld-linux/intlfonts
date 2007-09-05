@@ -2,7 +2,7 @@ Summary:	GNU international fonts
 Summary(pl.UTF-8):	Międzynarodowe fonty GNU
 Name:		intlfonts
 Version:	1.2.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		Fonts
 Source0:	ftp://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
@@ -340,4 +340,4 @@ fontpostinst Type1
 
 %files emacs
 %defattr(644,root,root,755)
-%{_datadir}/emacs/fonts/bdf
+%{_datadir}/emacs/fonts
