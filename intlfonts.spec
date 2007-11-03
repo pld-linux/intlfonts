@@ -1,3 +1,18 @@
+# TODO:
+#	installed but unpackaged:
+#	   /usr/share/fonts/Chinese.X/gb16fs.pcf.gz
+#	   /usr/share/fonts/Chinese.X/gb16st.pcf.gz
+#	   /usr/share/fonts/Chinese.X/gb24st.pcf.gz
+#	   /usr/share/fonts/Japanese.X/12x24rk.pcf.gz
+#	   /usr/share/fonts/Japanese.X/8x16rk.pcf.gz
+#	   /usr/share/fonts/Japanese.X/fonts.alias
+#	   /usr/share/fonts/Japanese.X/jiskan16.pcf.gz
+#	   /usr/share/fonts/Japanese.X/jiskan24.pcf.gz
+#	   /usr/share/fonts/Japanese.X/k14.pcf.gz
+#	   /usr/share/fonts/Korean.X/hanglg16.pcf.gz
+#	   /usr/share/fonts/Korean.X/hanglm16.pcf.gz
+#	   /usr/share/fonts/Korean.X/hanglm24.pcf.gz
+#
 Summary:	GNU international fonts
 Summary(pl.UTF-8):	Międzynarodowe fonty GNU
 Name:		intlfonts
@@ -10,7 +25,8 @@ Source0:	ftp://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
 Patch0:		%{name}-Chinese.patch
 Patch1:		%{name}-dirs.patch
 URL:		http://www.gnu.org/directory/GNU/intlfonts.html
-BuildRequires:	XFree86-devel
+BuildRequires:	xorg-app-bdftopcf
+BuildRequires:	xorg-app-mkfontdir
 BuildRequires:	t1utils
 BuildRequires:	type1inst
 BuildArch:	noarch
