@@ -20,7 +20,7 @@ Version:	1.2.1
 Release:	4
 License:	GPL
 Group:		Fonts
-Source0:	ftp://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
+Source0:	http://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
 # Source0-md5:	d77e9c4ec066a985687e5c67992677e4
 Patch0:		%{name}-Chinese.patch
 Patch1:		%{name}-dirs.patch
