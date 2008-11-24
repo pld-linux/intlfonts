@@ -236,6 +236,8 @@ rm -f $RPM_BUILD_ROOT%{t1fontsdir}/*.pfa
 
 mv -f $RPM_BUILD_ROOT%{_fontsdir}/TrueType $RPM_BUILD_ROOT%{ttffontsdir}
 
+mv -f $RPM_BUILD_ROOT%{_fontsdir}/European/fonts.alias{,.-intlfonts}
+
 cd $RPM_BUILD_ROOT%{t1fontsdir}
 /usr/bin/type1inst
 tail -n +2 fonts.scale > fonts.scale.intl
