@@ -1,29 +1,15 @@
-# TODO:
-#	installed but unpackaged:
-#	   /usr/share/fonts/Chinese.X/gb16fs.pcf.gz
-#	   /usr/share/fonts/Chinese.X/gb16st.pcf.gz
-#	   /usr/share/fonts/Chinese.X/gb24st.pcf.gz
-#	   /usr/share/fonts/Japanese.X/12x24rk.pcf.gz
-#	   /usr/share/fonts/Japanese.X/8x16rk.pcf.gz
-#	   /usr/share/fonts/Japanese.X/fonts.alias
-#	   /usr/share/fonts/Japanese.X/jiskan16.pcf.gz
-#	   /usr/share/fonts/Japanese.X/jiskan24.pcf.gz
-#	   /usr/share/fonts/Japanese.X/k14.pcf.gz
-#	   /usr/share/fonts/Korean.X/hanglg16.pcf.gz
-#	   /usr/share/fonts/Korean.X/hanglm16.pcf.gz
-#	   /usr/share/fonts/Korean.X/hanglm24.pcf.gz
-#
 Summary:	GNU international fonts
 Summary(pl.UTF-8):	Międzynarodowe fonty GNU
 Name:		intlfonts
 Version:	1.2.1
-Release:	4
+Release:	5
 License:	GPL
 Group:		Fonts
 Source0:	http://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
 # Source0-md5:	d77e9c4ec066a985687e5c67992677e4
 Patch0:		%{name}-Chinese.patch
 Patch1:		%{name}-dirs.patch
+Patch2:		%{name}-x_fonts.patch
 URL:		http://www.gnu.org/directory/GNU/intlfonts.html
 BuildRequires:	xorg-app-bdftopcf
 BuildRequires:	xorg-app-mkfontdir
@@ -146,6 +132,19 @@ Ten pakiet zawiera trochę japońskich fontów JISX0208.1990,
 JISX0208.1978, JISX0212.1990 (HojoKanji), JISX0208.1983 oraz JISX0201
 (Roman i Kana).
 
+%package korean
+Summary:	International fonts for X -- Korean
+Summary(pl.UTF-8):	Międzynarodowe fonty dla X - koreańskie
+Group:		Fonts
+Requires(post,postun):	fontpostinst
+
+%description korean
+This package includes some KSC5601
+Chinese fonts.
+
+%description korean -l pl.UTF-8
+Ten pakiet zawiera trochę koreańskich fontów KSC5601.
+
 %package phonetic
 Summary:	International fonts for X -- Phonetic Alphabet
 Summary(pl.UTF-8):	Międzynarodowe fonty dla X - alfabet fonetyczny
@@ -215,6 +214,7 @@ intlfonts-* (i innych).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 ./configure \
@@ -291,6 +291,12 @@ fontpostinst misc %{_fontsdir}/Japanese
 %postun japanese
 fontpostinst misc %{_fontsdir}/Japanese
 
+%post korean
+fontpostinst misc %{_fontsdir}/Korean
+
+%postun korean
+fontpostinst misc %{_fontsdir}/Korean
+
 %post phonetic
 fontpostinst misc %{_fontsdir}/Misc
 
@@ -341,6 +347,10 @@ fontpostinst Type1
 %files japanese
 %defattr(644,root,root,755)
 %{_fontsdir}/Japanese
+
+%files korean
+%defattr(644,root,root,755)
+%{_fontsdir}/Korean
 
 %files phonetic
 %defattr(644,root,root,755)
