@@ -139,8 +139,7 @@ Group:		Fonts
 Requires(post,postun):	fontpostinst
 
 %description korean
-This package includes some KSC5601
-Chinese fonts.
+This package includes some KSC5601 Korean fonts.
 
 %description korean -l pl.UTF-8
 Ten pakiet zawiera trochę koreańskich fontów KSC5601.
