@@ -2,7 +2,7 @@ Summary:	GNU international fonts
 Summary(pl.UTF-8):	Międzynarodowe fonty GNU
 Name:		intlfonts
 Version:	1.2.1
-Release:	5
+Release:	6
 License:	GPL
 Group:		Fonts
 Source0:	http://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
