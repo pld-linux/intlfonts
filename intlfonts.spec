@@ -1,16 +1,14 @@
 Summary:	GNU international fonts
 Summary(pl.UTF-8):	Międzynarodowe fonty GNU
 Name:		intlfonts
-Version:	1.2.1
-Release:	6
-License:	GPL
+Version:	1.4.2
+Release:	1
+License:	GPL v3+ with exception
 Group:		Fonts
-Source0:	http://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
-# Source0-md5:	d77e9c4ec066a985687e5c67992677e4
-Patch0:		%{name}-Chinese.patch
-Patch1:		%{name}-dirs.patch
-Patch2:		%{name}-x_fonts.patch
-URL:		http://www.gnu.org/directory/GNU/intlfonts.html
+Source0:	https://ftp.gnu.org/gnu/intlfonts/%{name}-%{version}.tar.gz
+# Source0-md5:	28b394febfa611a9d431ea87d37c946f
+Patch0:		%{name}-dirs.patch
+URL:		https://directory.fsf.org/wiki/GNU/intlfonts
 BuildRequires:	xorg-app-bdftopcf
 BuildRequires:	xorg-app-mkfontdir
 BuildRequires:	t1utils
@@ -32,8 +30,8 @@ Ten pakiet zawiera trochę powszechnie używanych fontów.
 Summary:	International fonts for X -- Arabic
 Summary(pl.UTF-8):	Międzynarodowe fonty dla X - arabskie
 Group:		Fonts
-Requires:	%{name}
 Requires(post,postun):	fontpostinst
+Requires:	%{name} = %{version}-%{release}
 Requires:	%{_fontsdir}/Misc
 
 %description arabic
@@ -106,8 +104,8 @@ Ten pakiet zawiera trochę fontów ISO 8859-1 (Latin-1), ISO 8859-2
 Summary:	International fonts for X -- Hebrew
 Summary(pl.UTF-8):	Międzynarodowe fonty dla X - hebrajskie
 Group:		Fonts
-Requires:	%{name}
 Requires(post,postun):	fontpostinst
+Requires:	%{name} = %{version}-%{release}
 Requires:	%{_fontsdir}/Misc
 
 %description hebrew
@@ -148,8 +146,8 @@ Ten pakiet zawiera trochę koreańskich fontów KSC5601.
 Summary:	International fonts for X -- Phonetic Alphabet
 Summary(pl.UTF-8):	Międzynarodowe fonty dla X - alfabet fonetyczny
 Group:		Fonts
-Requires:	%{name}
 Requires(post,postun):	fontpostinst
+Requires:	%{name} = %{version}-%{release}
 Requires:	%{_fontsdir}/Misc
 
 %description phonetic
@@ -212,38 +210,44 @@ intlfonts-* (i innych).
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
+
+%{__mv} Chinese.X/README{,.X}
+%{__mv} European.BIG/README{,.BIG}
+%{__mv} Japanese.BIG/README{,.BIG}
+%{__mv} Japanese.X/README{,.X}
+%{__mv} Misc/README{,.Misc}
 
 %build
-./configure \
-	--with-fontdir=$RPM_BUILD_ROOT%{_fontsdir} \
+%configure \
 	--enable-compress \
-	--with-type1 \
+	--with-fontdir=%{_fontsdir} \
 	--with-truetype \
+	--with-type1 \
 	--without-bdf
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/emacs/fonts/bdf
 
-%{__make} install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{t1afmdir}
-mv -f $RPM_BUILD_ROOT%{t1fontsdir}/*.afm $RPM_BUILD_ROOT%{t1afmdir}
-rm -f $RPM_BUILD_ROOT%{t1fontsdir}/*.pfa
+%{__mv} $RPM_BUILD_ROOT%{t1fontsdir}/*.afm $RPM_BUILD_ROOT%{t1afmdir}
+%{__rm} $RPM_BUILD_ROOT%{t1fontsdir}/*.pfa
 
-mv -f $RPM_BUILD_ROOT%{_fontsdir}/TrueType $RPM_BUILD_ROOT%{ttffontsdir}
-
-mv -f $RPM_BUILD_ROOT%{_fontsdir}/European/fonts.alias{,.-intlfonts}
+%{__mv} $RPM_BUILD_ROOT%{_fontsdir}/TrueType $RPM_BUILD_ROOT%{ttffontsdir}
 
 cd $RPM_BUILD_ROOT%{t1fontsdir}
 /usr/bin/type1inst
 tail -n +2 fonts.scale > fonts.scale.intl
-mv -f Fontmap Fontmap.intl
+%{__mv} Fontmap Fontmap.intl
+%{__rm} fonts.dir fonts.scale type1inst.log
 cd -
 
-install -m 644 `find -name '*.bdf'` $RPM_BUILD_ROOT%{_datadir}/emacs/fonts/bdf/
+touch $RPM_BUILD_ROOT%{_fontsdir}/{Misc,Asian,Chinese,Ethiopic,European,Japanese,Korean}/fonts.dir
+
+cp -p `find -name '*.bdf'` $RPM_BUILD_ROOT%{_datadir}/emacs/fonts/bdf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -316,54 +320,122 @@ fontpostinst Type1
 
 %files
 %defattr(644,root,root,755)
+%doc ChangeLog NEWS README Misc/README.Misc
 %dir %{_fontsdir}/Misc
-%dir %{_fontsdir}/Misc/bmp*
+%{_fontsdir}/Misc/bmp16-etl.pcf.gz
+%ghost %{_fontsdir}/Misc/fonts.dir
 
 %files arabic
 %defattr(644,root,root,755)
-%{_fontsdir}/Misc/arab*pcf.gz
+%{_fontsdir}/Misc/arab*-*-etl.pcf.gz
 
 %files asian
 %defattr(644,root,root,755)
-%{_fontsdir}/Asian
+%doc Asian/README
+%dir %{_fontsdir}/Asian
+%{_fontsdir}/Asian/ind*-mule.pcf.gz
+%{_fontsdir}/Asian/ind*-uni.pcf.gz
+%{_fontsdir}/Asian/isci*-mule.pcf.gz
+%{_fontsdir}/Asian/lao*-mule.pcf.gz
+%{_fontsdir}/Asian/thai*.pcf.gz
+%{_fontsdir}/Asian/tib*-mule.pcf.gz
+%{_fontsdir}/Asian/visc*-etl.pcf.gz
+%{_fontsdir}/Asian/xtis*.pcf.gz
+%{_fontsdir}/Asian/fonts.alias
+%ghost %{_fontsdir}/Asian/fonts.dir
 
 %files chinese
 %defattr(644,root,root,755)
-%{_fontsdir}/Chinese
+%doc Chinese/README Chinese.X/README.X
+%dir %{_fontsdir}/Chinese
+%{_fontsdir}/Chinese/gb*.pcf.gz
+%{_fontsdir}/Chinese/guob*.pcf.gz
+%{_fontsdir}/Chinese/sish*-etl.pcf.gz
+%{_fontsdir}/Chinese/taipei*.pcf.gz
+%{_fontsdir}/Chinese/fonts.alias
+%ghost %{_fontsdir}/Chinese/fonts.dir
 
 %files ethiopic
 %defattr(644,root,root,755)
-%{_fontsdir}/Ethiopic
+%doc Ethiopic/README
+%dir %{_fontsdir}/Ethiopic
+%{_fontsdir}/Ethiopic/ethio*-uni.pcf.gz
+%ghost %{_fontsdir}/Ethiopic/fonts.dir
 
 %files european
 %defattr(644,root,root,755)
-%{_fontsdir}/European
+%doc European/README European.BIG/README.BIG
+%dir %{_fontsdir}/European
+%{_fontsdir}/European/cyr*-etl.pcf.gz
+%{_fontsdir}/European/grk*-etl.pcf.gz
+%{_fontsdir}/European/koi*-etl.pcf.gz
+%{_fontsdir}/European/lt1-*.pcf.gz
+%{_fontsdir}/European/lt2-*-etl.pcf.gz
+%{_fontsdir}/European/lt3-*-etl.pcf.gz
+%{_fontsdir}/European/lt4-*-etl.pcf.gz
+%{_fontsdir}/European/lt5-*-etl.pcf.gz
+%{_fontsdir}/European/fonts.alias
+%ghost %{_fontsdir}/European/fonts.dir
 
 %files hebrew
 %defattr(644,root,root,755)
-%{_fontsdir}/Misc/heb*pcf.gz
+%{_fontsdir}/Misc/heb*-etl.pcf.gz
 
 %files japanese
 %defattr(644,root,root,755)
-%{_fontsdir}/Japanese
+%doc Japanese/README Japanese.BIG/README.BIG Japanese.X/README.X
+%dir %{_fontsdir}/Japanese
+%{_fontsdir}/Japanese/*x*rk.pcf.gz
+%{_fontsdir}/Japanese/a18rk*.pcf.gz
+%{_fontsdir}/Japanese/j*-*.pcf.gz
+%{_fontsdir}/Japanese/jiskan*.pcf.gz
+%{_fontsdir}/Japanese/jksp*.pcf.gz
+%{_fontsdir}/Japanese/k14.pcf.gz
+%{_fontsdir}/Japanese/fonts.alias
+%ghost %{_fontsdir}/Japanese/fonts.dir
 
 %files korean
 %defattr(644,root,root,755)
-%{_fontsdir}/Korean
+%doc Korean.X/README
+%dir %{_fontsdir}/Korean
+%{_fontsdir}/Korean/hangl*.pcf.gz
+%ghost %{_fontsdir}/Korean/fonts.dir
 
 %files phonetic
 %defattr(644,root,root,755)
-%{_fontsdir}/Misc/ipa*pcf.gz
+%{_fontsdir}/Misc/ipa*-etl.pcf.gz
 
 %files TrueType
 %defattr(644,root,root,755)
-%{_fontsdir}/TTF/*
+%doc TrueType/README
+%{_fontsdir}/TTF/lt1-*-omega-serif.ttf
+%{_fontsdir}/TTF/lt2-*-omega-serif.ttf
+%{_fontsdir}/TTF/lt3-*-omega-serif.ttf
+%{_fontsdir}/TTF/lt4-*-omega-serif.ttf
+%{_fontsdir}/TTF/lt5-*-omega-serif.ttf
+%{_fontsdir}/TTF/viscii-omega-serif.ttf
 
 %files Type1
 %defattr(644,root,root,755)
-%{_fontsdir}/Type1/*.pfb
-%{_fontsdir}/Type1/*.intl
-%{_fontsdir}/Type1/afm/*
+%doc Type1/README
+%{_fontsdir}/Type1/lt1-*-omega-serif.pfb
+%{_fontsdir}/Type1/lt2-*-omega-serif.pfb
+%{_fontsdir}/Type1/lt3-*-omega-serif.pfb
+%{_fontsdir}/Type1/lt4-*-omega-serif.pfb
+%{_fontsdir}/Type1/lt5-*-omega-serif.pfb
+%{_fontsdir}/Type1/nf3*.pfb
+%{_fontsdir}/Type1/tis620-*-omega-serif.pfb
+%{_fontsdir}/Type1/viscii-*-omega-serif.pfb
+%{_fontsdir}/Type1/Fontmap.intl
+%{_fontsdir}/Type1/fonts.scale.intl
+%{_fontsdir}/Type1/afm/lt1-*-omega-serif.afm
+%{_fontsdir}/Type1/afm/lt2-*-omega-serif.afm
+%{_fontsdir}/Type1/afm/lt3-*-omega-serif.afm
+%{_fontsdir}/Type1/afm/lt4-*-omega-serif.afm
+%{_fontsdir}/Type1/afm/lt5-*-omega-serif.afm
+%{_fontsdir}/Type1/afm/nf3*.afm
+%{_fontsdir}/Type1/afm/tis620-*-omega-serif.afm
+%{_fontsdir}/Type1/afm/viscii-*-omega-serif.afm
 
 %files emacs
 %defattr(644,root,root,755)

@@ -1,43 +1,43 @@
---- intlfonts-1.2/Makefile.in~	Wed Dec  8 07:25:45 1999
-+++ intlfonts-1.2/Makefile.in	Wed Oct 23 20:51:24 2002
+--- intlfonts-1.4.2/Makefile.in.orig	2021-04-16 18:31:04.173346072 +0200
++++ intlfonts-1.4.2/Makefile.in	2021-04-16 18:34:18.678959011 +0200
 @@ -38,25 +38,32 @@
- 	  rm -f ${fontdir}/temp ; \
+ 	  rm -f $(DESTDIR)${fontdir}/temp ; \
  	fi
  	@for dirs in ${SUBDIRS} ${SUBDIRS_X} ${SUBDIRS_BIG}; do \
-+	  destdir=`echo $${dirs} | sed 's/\([a-zA-Z]*\)\.BIG/\1/'` ; \
-+	  if [ ! -d ${fontdir}/$${destdir} ] ; then \
-+	    $(INSTALL) -d ${fontdir}/$${destdir} ; \
++	  destdir=`echo $${dirs} | sed 's/\([a-zA-Z]*\)\.\(BIG\|X\)/\1/'` ; \
++	  if [ ! -d $(DESTDIR)${fontdir}/$${destdir} ] ; then \
++	    $(INSTALL) -d $(DESTDIR)${fontdir}/$${destdir} ; \
 +	  fi ; \
  	  if [ -d ${srcdir}/$${dirs} ] ; then \
  	    for f in ${srcdir}/$${dirs}/*.bdf; do \
  	      FONT=`basename $${f} .bdf`.pcf ; \
--	      echo "Installing ${fontdir}/$${FONT}..." ; \
--	      $(BDFTOPCF) $${f} > ${fontdir}/$${FONT} ; \
-+	      echo "Installing ${fontdir}/$${destdir}/$${FONT}..." ; \
-+	      $(BDFTOPCF) $${f} > ${fontdir}/$${destdir}/$${FONT} ; \
+-	      echo "Installing $(DESTDIR)${fontdir}/$${FONT}..." ; \
+-	      $(BDFTOPCF) $${f} > $(DESTDIR)${fontdir}/$${FONT} ; \
++	      echo "Installing $(DESTDIR)${fontdir}/$${destdir}/$${FONT}..." ; \
++	      $(BDFTOPCF) $${f} > $(DESTDIR)${fontdir}/$${destdir}/$${FONT} ; \
  	    done ; \
  	    if [ -f ${srcdir}/$${dirs}/fonts.alias ] ; then \
--	      cat ${srcdir}/$${dirs}/fonts.alias >> ${fontdir}/temp ; \
-+	      cat ${srcdir}/$${dirs}/fonts.alias >> ${fontdir}/$${destdir}/temp ; \
+-	      cat ${srcdir}/$${dirs}/fonts.alias >> $(DESTDIR)${fontdir}/temp ; \
++	      cat ${srcdir}/$${dirs}/fonts.alias >> $(DESTDIR)${fontdir}/$${destdir}/temp ; \
  	    fi ; \
  	  else true; fi ; \
  	done
--	@if [ -f ${fontdir}/temp ] ; then \
--	  sort < ${fontdir}/temp | uniq > ${fontdir}/fonts.alias ; \
--	  rm -f ${fontdir}/temp ; \
+-	@if [ -f $(DESTDIR)${fontdir}/temp ] ; then \
+-	  sort < $(DESTDIR)${fontdir}/temp | uniq > $(DESTDIR)${fontdir}/fonts.alias ; \
+-	  rm -f $(DESTDIR)${fontdir}/temp ; \
 -	fi
 +	@for dirs in ${SUBDIRS} ${SUBDIRS_X} ${SUBDIRS_BIG}; do \
-+	  destdir=`echo $${dirs} | sed 's/\([a-zA-Z]*\)\.BIG/\1/'` ; \
-+	  if [ -f ${fontdir}/$${destdir}/temp ] ; then \
-+	    sort < ${fontdir}/$${destdir}/temp | uniq > ${fontdir}/$${destdir}/fonts.alias ; \
-+	    rm -f ${fontdir}/$${destdir}/temp ; \
++	  destdir=`echo $${dirs} | sed 's/\([a-zA-Z]*\)\.\(BIG\|X\)/\1/'` ; \
++	  if [ -f $(DESTDIR)${fontdir}/$${destdir}/temp ] ; then \
++	    sort < $(DESTDIR)${fontdir}/$${destdir}/temp | uniq > $(DESTDIR)${fontdir}/$${destdir}/fonts.alias ; \
++	    rm -f $(DESTDIR)${fontdir}/$${destdir}/temp ; \
 +	  fi ; \
 +	done
  	@if [ "${COMPRESS}" != "no" ] ; then \
  	  echo "Compressing PCF fonts by ${COMPRESS}..." ; \
- 	  rm -f ${fontdir}/*.pcf.* ; \
--	  ${COMPRESS} ${fontdir}/*.pcf ; \
-+	  ${COMPRESS} ${fontdir}/*/*.pcf ; \
+ 	  rm -f $(DESTDIR)${fontdir}/*.pcf.* ; \
+-	  ${COMPRESS} $(DESTDIR)${fontdir}/*.pcf ; \
++	  ${COMPRESS} $(DESTDIR)${fontdir}/*/*.pcf ; \
  	fi
- 	@echo "Making ${fontdir}/fonts.dir..."
- 	$(MKFONTDIR) ${fontdir}
+ 	@echo "Making $(DESTDIR)${fontdir}/fonts.dir..."
+ 	$(MKFONTDIR) $(DESTDIR)${fontdir}
